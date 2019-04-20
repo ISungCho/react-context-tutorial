@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SampleConsumer } from '../contexts/sample';
+import { useSample } from '../contexts/sample';
 
 class Sends extends Component {
 	state = {
@@ -12,38 +12,21 @@ class Sends extends Component {
 		})
 	}
 
-	handleChange = (e) => {
-		console.log(e.target.value)
-		this.setState({ input: e.target.value });
-	}
-
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.props)
 		this.props.setValue(this.state.input)
 	}
 
-	render(){
-		return (
-			<form onSubmit={this.handleSubmit}>
-				<input value={this.state.input} onChange={this.handleChange}></input>
-				<button type="submit">설정</button>
-			</form>
-		);
+	handelChange = (e) => {
+		console.log(e.target.value)
+		this.setState({ input: e.target.value })
+	}
+
+	render() {
+		return <form onSubmit={this.handleSubmit}>
+			<input onChange={this.handelChange}></input>
+			<button type="submit">설정</button>
+		</form>
 	}
 }
-
-const SendsContainer = () => (
-	<SampleConsumer>
-		{
-			({state, actions}) =>(
-				<Sends 
-				value={state.value}
-				setValue={actions.setValue}
-				/>
-			)
-		}
-	</SampleConsumer>
-)
-
-export default SendsContainer;
+export default useSample(Sends);

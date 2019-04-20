@@ -1,6 +1,7 @@
 import React from 'react';
 import LeftPane from './components/LeftPane';
 import RightPane from './components/RightPane';
+import Counter from './components/Counter';
 import { SampleProvider } from './contexts/sample';
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
         <LeftPane />
         <RightPane />
       </div>
+			<Counter/>
     </SampleProvider>
   );
 };

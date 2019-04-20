@@ -6,7 +6,7 @@ const RightPane = () => {
 		<div className="pane">
 			<Receives />
 		</div>
-	);
-};
+	)
+}
 
 export default RightPane;
